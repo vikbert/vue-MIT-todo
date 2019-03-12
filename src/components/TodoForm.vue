@@ -2,23 +2,26 @@
   <input class="new-todo"
          autofocus autocomplete="off"
          placeholder="What needs to be done?"
-         v-model="newTodo"
-         @keyup.enter="keyupEnterHandler(newTodo)">
+         v-model="todoInput"
+         @keyup.enter="keyupEnterHandler(todoInput)">
 </template>
 
 <script>
   export default {
     name: "TodoForm",
-    props: ['addNewTodo'],
     data () {
       return {
-        newTodo: '',
+        todoInput: '',
       }
     },
     methods: {
-      keyupEnterHandler(todo) {
-        this.$parent.addNewTodo(todo)
-        this.newTodo = ''
+      keyupEnterHandler(todoInput) {
+        let value = todoInput && todoInput.trim()
+        if (!value) {
+          return
+        }
+        this.$parent.addTodo(value)
+        this.todoInput = ''
       }
     },
   };
