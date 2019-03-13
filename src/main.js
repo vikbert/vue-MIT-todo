@@ -2,6 +2,7 @@ import Vue from 'vue'
 import TodoApp from './TodoApp.vue'
 
 require('./assets/css/index.css');
+require('./assets/css/customized.css');
 
 const STORAGE_KEY = 'VUE_APP_TODO_LIST';
 const todoLocalStorage = {
