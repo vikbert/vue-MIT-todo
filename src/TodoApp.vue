@@ -61,14 +61,21 @@
           case 'completed':
             return this.completedTodos;
           default:
-            return this.todos;
+            return this.allTodos;
         }
       },
+      allTodos: function () {
+        return _.orderBy(this.todos, ['completed', 'starred'], ['asc', 'desc'])
+      },
       completedTodos: function () {
-        return _.filter(this.todos, ['completed', true]);
+        let result =  _.filter(this.todos, ['completed', true])
+
+        return _.orderBy(result, ['starred'], ['desc'])
       },
       activeTodos: function () {
-        return _.filter(this.todos, ['completed', false]);
+        let result = _.filter(this.todos, ['completed', false]);
+
+        return _.orderBy(result, ['starred'],  ['desc'])
       },
       remaining: function () {
         return this.activeTodos.length;
@@ -89,6 +96,7 @@
         this.todos.push({
           id: this.$storage.uid++,
           title: newTodoText,
+          starred: 0,
           completed: false,
         });
       },
