@@ -6,7 +6,7 @@ possible. Keep this list separate from your general to-do list. 
 
 For such purpose, I tried to rewrite a Todo App with Vue.js for personal use. 
 
-![homepage](public/todo.png)
+![homepage](src/assets/screenshot_todo.png)
 
 ## Project setup
 ```
