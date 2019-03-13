@@ -1,28 +1,40 @@
 <template>
   <div>
     <ul class="filters">
-      <li><a href="#/all" @click="showAll">All</a></li>
-      <li><a href="#/all" @click="showActive">Active</a></li>
-      <li><a href="#/all" @click="showCompleted">Completed</a></li>
+      <li><a href="#/all" :class="{ selected: isSetToAll(visibility) }" @click="setVisibilityToAll">All</a></li>
+      <li><a href="#/all" :class="{ selected: isSetToActive(visibility) }" @click="setVisibilityToActive">Active</a></li>
+      <li><a href="#/all" :class="{ selected: isSetToCompleted(visibility) }" @click="setVisibilityToCompleted">Completed</a></li>
     </ul>
-    <button class="clear-completed" @click="removeCompleted">
+    <button class="clear-completed" @click="removeCompletedTodos">
       Clear completed
     </button>
   </div>
 </template>
 
 <script>
+  import FilterConfig from './TodoFilter.conf'
+
   export default {
     name: "TodoControl",
+    props: ['visibility'],
     methods: {
-      showAll() {
-        this.$parent.updateVisibility('all');
+      isSetToAll(visibility) {
+        return FilterConfig.VISIBILITY_ALL === visibility;
       },
-      showActive() {
-        this.$parent.updateVisibility('active');
+      isSetToActive(visibility) {
+        return FilterConfig.VISIBILITY_ACTIVE === visibility;
       },
-      showCompleted() {
-        this.$parent.updateVisibility('completed');
+      isSetToCompleted(visibility) {
+        return FilterConfig.VISIBILITY_COMPLETED === visibility;
+      },
+      setVisibilityToAll() {
+        this.$parent.updateVisibility(FilterConfig.VISIBILITY_ALL);
+      },
+      setVisibilityToActive() {
+        this.$parent.updateVisibility(FilterConfig.VISIBILITY_ACTIVE);
+      },
+      setVisibilityToCompleted() {
+        this.$parent.updateVisibility(FilterConfig.VISIBILITY_COMPLETED);
       },
       removeCompletedTodos() {
         this.$parent.removeCompletedTodos();

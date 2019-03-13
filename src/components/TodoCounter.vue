@@ -1,6 +1,6 @@
 <template>
   <span class="todo-count">
-      <strong>{{ counter }}</strong> {{ counter | pluralize }} left
+    <strong>{{ counter }}</strong> {{ counter | pluralize }} left
   </span>
 </template>
 

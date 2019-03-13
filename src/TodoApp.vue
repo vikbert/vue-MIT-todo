@@ -16,7 +16,7 @@
 
       <footer class="footer" v-show="todos.length" v-cloak>
         <TodoCounter :counter="counter"></TodoCounter>
-        <TodoControl></TodoControl>
+        <TodoControl :visibility="visibility"></TodoControl>
       </footer>
     </section>
   </div>
@@ -24,6 +24,7 @@
 
 <script>
   import _ from "lodash";
+  import FilterConfig from './components/TodoFilter.conf'
   import TodoItem from './components/TodoItem';
   import TodoForm from './components/TodoForm';
   import TodoCounter from './components/TodoCounter';
@@ -34,7 +35,7 @@
     data() {
       return {
         todos: this.$storage.fetch(),
-        visibility: 'all',
+        visibility: FilterConfig.VISIBILITY_ALL,
       };
     },
     components: {
