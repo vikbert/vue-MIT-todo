@@ -1,4 +1,12 @@
-# vue-todo-app
+# M.I.T Todo App
+Never feel overwhelmed at work again- the M.I.T. technique. A `Most Important Task (MIT)` is a 
+critical task that will create the most significant results. 
+Every day, create a list of `two or three M.I.T.s`, and focus on getting them done as soon as 
+possible. Keep this list separate from your general to-do list. 
+
+For such purpose, I tried to rewrite a Todo App with Vue.js for personal use. 
+
+![homepage](public/todo.png)
 
 ## Project setup
 ```
@@ -13,11 +21,6 @@ yarn run serve
 ### Compiles and minifies for production
 ```
 yarn run build
-```
-
-### Run your tests
-```
-yarn run test
 ```
 
 ### Lints and fixes files
