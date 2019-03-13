@@ -24,8 +24,8 @@
       showCompleted() {
         this.$parent.updateVisibility('completed');
       },
-      removeCompleted() {
-        this.$parent.removeCompleted();
+      removeCompletedTodos() {
+        this.$parent.removeCompletedTodos();
       },
     },
   };

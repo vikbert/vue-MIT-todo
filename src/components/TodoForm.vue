@@ -3,7 +3,7 @@
          autofocus autocomplete="off"
          placeholder="What needs to be done?"
          v-model="todoInput"
-         @keyup.enter="keyupEnterHandler(todoInput)">
+         @keyup.enter="formSubmitHandler(todoInput)">
 </template>
 
 <script>
@@ -15,12 +15,18 @@
       }
     },
     methods: {
-      keyupEnterHandler(todoInput) {
+      formSubmitHandler(todoInput) {
         let value = todoInput && todoInput.trim()
         if (!value) {
           return
         }
-        this.$parent.addTodo(value)
+        this.$parent.addTodo({
+          id: this.$storage.uid++,
+          title: todoInput,
+          starred: 0,
+          completed: false,
+        })
+
         this.todoInput = ''
       }
     },

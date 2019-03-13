@@ -10,12 +10,12 @@
         <input id="toggle-all" class="toggle-all" type="checkbox" v-model="batchAll">
         <label for="toggle-all"></label>
         <ul class="todo-list">
-          <TodoItem v-for="todo in filteredTodos" :key="todo.id" :todo="todo"></TodoItem>
+          <TodoItem v-for="todo in todosFiltered" :key="todo.id" :todo="todo"></TodoItem>
         </ul>
       </section>
 
       <footer class="footer" v-show="todos.length" v-cloak>
-        <TodoCounter :counter="remaining"></TodoCounter>
+        <TodoCounter :counter="counter"></TodoCounter>
         <TodoControl></TodoControl>
       </footer>
     </section>
@@ -54,35 +54,35 @@
     },
     // http://vuejs.org/guide/computed.html
     computed: {
-      filteredTodos: function () {
+      todosFiltered: function () {
         switch (this.visibility) {
           case 'active':
-            return this.activeTodos;
+            return this.todosActive;
           case 'completed':
-            return this.completedTodos;
+            return this.todosCompleted;
           default:
-            return this.allTodos;
+            return this.todosAll;
         }
       },
-      allTodos: function () {
+      todosAll: function () {
         return _.orderBy(this.todos, ['completed', 'starred'], ['asc', 'desc'])
       },
-      completedTodos: function () {
+      todosCompleted: function () {
         let result =  _.filter(this.todos, ['completed', true])
 
         return _.orderBy(result, ['starred'], ['desc'])
       },
-      activeTodos: function () {
+      todosActive: function () {
         let result = _.filter(this.todos, ['completed', false]);
 
         return _.orderBy(result, ['starred'],  ['desc'])
       },
-      remaining: function () {
-        return this.activeTodos.length;
+      counter: function () {
+        return this.todosActive.length;
       },
       batchAll: {
         get: function () {
-          return this.remaining === 0;
+          return this.counter === 0;
         },
         set: function (value) {
           this.todos.forEach(function (todo) {
@@ -92,23 +92,15 @@
       },
     },
     methods: {
-      addTodo(newTodoText) {
-        this.todos.push({
-          id: this.$storage.uid++,
-          title: newTodoText,
-          starred: 0,
-          completed: false,
-        });
+      addTodo(todoObj) {
+        this.todos.push(todoObj);
       },
-
       removeTodo(todoObj) {
         this.todos.splice(this.todos.indexOf(todoObj), 1);
       },
-
-      removeCompleted() {
-        this.todos = this.activeTodos;
+      removeCompletedTodos() {
+        this.todos = this.todosActive;
       },
-
       updateVisibility(visibility) {
         this.visibility = visibility;
       },
