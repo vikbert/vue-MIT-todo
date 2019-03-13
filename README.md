@@ -8,6 +8,8 @@ For such purpose, I tried to rewrite a Todo App with Vue.js for personal use.
 
 ![homepage](src/assets/screenshot_todo.png)
 
+
+
 ## Project setup
 ```
 yarn install
@@ -30,3 +32,5 @@ yarn run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+![homepage](src/assets/screenshot_components.png)
