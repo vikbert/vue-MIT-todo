@@ -1,5 +1,8 @@
 <template>
   <div id="todo-demo">
+    <a href="https://github.com/vikbert/vue-MIT-todo" target="_blank">
+      <avatar size="48" image="https://github.githubassets.com/images/modules/site/logos/desktop-logo.png" ></avatar>
+    </a>
     <section class="todoapp">
       <header class="header">
         <h1>M I T Todo</h1>
@@ -23,6 +26,7 @@
 </template>
 
 <script>
+  import Avatar from 'vue-avatar-component'
   import _ from "lodash";
   import FilterConfig from './components/TodoFilter.conf'
   import TodoItem from './components/TodoItem';
@@ -39,6 +43,7 @@
       };
     },
     components: {
+      Avatar,
       TodoItem,
       TodoForm,
       TodoCounter,

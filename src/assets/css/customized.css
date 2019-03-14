@@ -8,3 +8,9 @@
     font-weight: 400;
     color: #522c2cf7;
 }
+/*avatar*/
+.avatar {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
