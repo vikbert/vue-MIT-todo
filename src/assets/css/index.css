@@ -385,6 +385,21 @@ html .clear-completed:active {
 }
 
 @media (max-width: 430px) {
+    h1, .todo-count, .clear-completed {
+        display: none;
+    }
+    .todoapp {
+        margin-top: 0;
+    }
+    .todo-list li {
+        font-size: 14px;
+    }
+    .todo-list li .star {
+        height: 25px;
+    }
+    .todo-list li .starred {
+        height: 36px;
+    }
     .footer {
         height: 50px;
     }

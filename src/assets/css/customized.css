@@ -6,5 +6,5 @@
 /*component todo_item*/
 .todo-list li.starred {
     font-weight: 400;
-    color: darkred;
+    color: #522c2cf7;
 }
