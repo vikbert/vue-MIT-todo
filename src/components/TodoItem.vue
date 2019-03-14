@@ -1,5 +1,5 @@
 <template>
-  <li class="todo" :class="{ completed: todo.completed, editing: todo === editedTodo, starred: todo.starred }">
+  <li class="todo" :class="{ completed: todo.completed, editing: todo === editedTodo, starred_todo: todo.starred }">
     <div class="view">
       <input class="toggle" type="checkbox" v-model="todo.completed">
       <label @dblclick="doubleClickHandler(todo)">{{ todo.title }}</label>

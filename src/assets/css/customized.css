@@ -4,10 +4,14 @@
 }
 
 /*component todo_item*/
-.todo-list li.starred {
+.todo-list li.starred_todo {
     font-weight: 400;
     color: #522c2cf7;
 }
+.todo-list li .starred_completed {
+    fill: #d8d3d3;
+}
+
 /*avatar*/
 .avatar {
     position: absolute;
