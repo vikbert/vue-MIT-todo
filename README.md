@@ -34,3 +34,10 @@ yarn run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ![homepage](src/assets/screenshot_components.png)
+
+
+## License
+[MIT](http://opensource.org/licenses/MIT)
+
+
+Copyright(c) 2019-present, Xun Zhou
