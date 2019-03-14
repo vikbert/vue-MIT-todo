@@ -13,10 +13,21 @@
 
   export default {
     name: "TodoStarIcon",
-    props: ['todo'],
+    props: ['todo', 'counterActiveStarred'],
     methods: {
       toggleStarStatus(todo) {
+        if (3 === this.counterActiveStarred) {
+          this.showExceededNotification()
+          return
+        }
         todo.starred = todo.starred === STATUS_STARRED ? STATUS_NORMAL : STATUS_STARRED;
+      },
+      showExceededNotification() {
+        this.$notify({
+          title: 'Max 3 M.I.T.s per Day',
+          message: 'Every day, focus on only 2-3 MITs and get them done as soon as possible!',
+          type: 'warning'
+        });
       },
     },
   };

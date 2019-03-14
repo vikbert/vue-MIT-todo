@@ -3,7 +3,7 @@
     <div class="view">
       <input class="toggle" type="checkbox" v-model="todo.completed">
       <label @dblclick="doubleClickHandler(todo)">{{ todo.title }}</label>
-      <TodoStarIcon :todo="todo"></TodoStarIcon>
+      <TodoStarIcon :todo="todo" :counterActiveStarred="counterActiveStarred"></TodoStarIcon>
     </div>
 
     <!--double click on label text will hide label text and show this input element instead-->
@@ -21,7 +21,7 @@
 
   export default {
     name: "TodoItem",
-    props: ['todo'],
+    props: ['todo', 'counterActiveStarred'],
     data() {
       return {
         editedTodo: null,

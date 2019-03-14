@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import TodoApp from './TodoApp.vue'
 
+// Element UI
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+Vue.use(ElementUI)
+
 require('./assets/css/index.css');
 require('./assets/css/customized.css');
 

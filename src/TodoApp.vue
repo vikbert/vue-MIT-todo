@@ -1,7 +1,7 @@
 <template>
   <div id="todo-demo">
     <a href="https://github.com/vikbert/vue-MIT-todo" target="_blank">
-      <avatar size="48" image="https://github.githubassets.com/images/modules/site/logos/desktop-logo.png" ></avatar>
+      <avatar image="https://github.githubassets.com/images/modules/site/logos/desktop-logo.png" ></avatar>
     </a>
     <section class="todoapp">
       <header class="header">
@@ -13,12 +13,12 @@
         <input id="toggle-all" class="toggle-all" type="checkbox" v-model="batchAll">
         <label for="toggle-all"></label>
         <ul class="todo-list">
-          <TodoItem v-for="todo in todosFiltered" :key="todo.id" :todo="todo"></TodoItem>
+          <TodoItem v-for="todo in todosFiltered" :key="todo.id" :todo="todo" :counterActiveStarred="counterActiveStarred"></TodoItem>
         </ul>
       </section>
 
       <footer class="footer" v-show="todos.length" v-cloak>
-        <TodoCounter :counter="counter"></TodoCounter>
+        <TodoCounter :counterActive="counterActive"></TodoCounter>
         <TodoControl :visibility="visibility"></TodoControl>
       </footer>
     </section>
@@ -26,8 +26,8 @@
 </template>
 
 <script>
-  import Avatar from 'vue-avatar-component'
   import _ from "lodash";
+  import Avatar from 'vue-avatar-component'
   import FilterConfig from './components/TodoFilter.conf'
   import TodoItem from './components/TodoItem';
   import TodoForm from './components/TodoForm';
@@ -83,12 +83,18 @@
 
         return _.orderBy(result, ['starred'],  ['desc'])
       },
-      counter: function () {
+      todosActiveStarred: function() {
+        return _.filter(this.todos, {'completed': false, 'starred': 1})
+      },
+      counterActive: function () {
         return this.todosActive.length;
+      },
+      counterActiveStarred: function () {
+        return this.todosActiveStarred.length
       },
       batchAll: {
         get: function () {
-          return this.counter === 0;
+          return this.counterActive === 0;
         },
         set: function (value) {
           this.todos.forEach(function (todo) {
