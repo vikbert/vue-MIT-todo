@@ -2,7 +2,7 @@
   <div id="todo-demo">
     <section class="todoapp">
       <header class="header">
-        <h1>M I T</h1>
+        <h1>M I T Todo</h1>
         <TodoForm></TodoForm>
       </header>
 
