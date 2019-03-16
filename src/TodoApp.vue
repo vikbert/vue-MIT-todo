@@ -22,6 +22,7 @@
         <TodoControl :visibility="visibility"></TodoControl>
       </footer>
     </section>
+    <span>CSS template powered by todomvc.com®</span>
   </div>
 </template>
 
