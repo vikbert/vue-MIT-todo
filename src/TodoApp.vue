@@ -74,14 +74,14 @@
         return _.orderBy(this.todos, ['completed', 'starred'], ['asc', 'desc'])
       },
       todosCompleted: function () {
-        let result =  _.filter(this.todos, ['completed', true])
+        let completedTodos =  _.filter(this.todos, ['completed', true])
 
-        return _.orderBy(result, ['starred'], ['desc'])
+        return _.orderBy(completedTodos, ['starred'], ['desc'])
       },
       todosActive: function () {
-        let result = _.filter(this.todos, ['completed', false]);
+        let activeTodos = _.filter(this.todos, ['completed', false]);
 
-        return _.orderBy(result, ['starred'],  ['desc'])
+        return _.orderBy(activeTodos, ['starred'],  ['desc'])
       },
       todosActiveStarred: function() {
         return _.filter(this.todos, {'completed': false, 'starred': 1})
@@ -106,6 +106,9 @@
     methods: {
       addTodo(todoObj) {
         this.todos = [todoObj, ...this.todos];
+      },
+      removeTodo(todoObj) {
+        this.todos.splice(this.todos.indexOf(todoObj), 1);
       },
       removeCompletedTodos() {
         this.todos = this.todosActive;
