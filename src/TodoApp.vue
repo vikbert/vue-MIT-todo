@@ -105,10 +105,7 @@
     },
     methods: {
       addTodo(todoObj) {
-        this.todos.push(todoObj);
-      },
-      removeTodo(todoObj) {
-        this.todos.splice(this.todos.indexOf(todoObj), 1);
+        this.todos = [todoObj, ...this.todos];
       },
       removeCompletedTodos() {
         this.todos = this.todosActive;
