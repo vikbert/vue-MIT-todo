@@ -9,26 +9,26 @@
 <script>
   export default {
     name: "TodoForm",
-    data () {
+    data() {
       return {
         todoInput: '',
-      }
+      };
     },
     methods: {
       formSubmitHandler(todoInput) {
-        let value = todoInput && todoInput.trim()
+        let value = todoInput && todoInput.trim();
         if (!value) {
-          return
+          return;
         }
         this.$parent.addTodo({
           id: this.$storage.uid++,
           title: todoInput,
           starred: 0,
           completed: false,
-        })
+        });
 
-        this.todoInput = ''
-      }
+        this.todoInput = '';
+      },
     },
   };
 </script>
