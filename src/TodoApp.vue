@@ -29,7 +29,7 @@
 <script>
   import _ from "lodash";
   import Avatar from 'vue-avatar-component'
-  import FilterConfig from './components/TodoFilter.conf'
+  import * as FilterConfig from './constants/Filter'
   import TodoItem from './components/TodoItem';
   import TodoForm from './components/TodoForm';
   import TodoCounter from './components/TodoCounter';

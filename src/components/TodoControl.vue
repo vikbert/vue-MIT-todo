@@ -12,7 +12,7 @@
 </template>
 
 <script>
-  import FilterConfig from './TodoFilter.conf'
+  import * as FilterConfig from '../constants/Filter'
 
   export default {
     name: "TodoControl",
