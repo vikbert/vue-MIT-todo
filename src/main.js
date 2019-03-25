@@ -6,7 +6,6 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI)
 
-require('./assets/css/index.css');
 require('./assets/css/customized.css');
 
 const STORAGE_KEY = 'VUE_APP_TODO_LIST';

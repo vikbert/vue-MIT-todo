@@ -1,7 +1,7 @@
 <template>
   <div id="todo-demo">
     <a href="https://github.com/vikbert/vue-MIT-todo" target="_blank">
-      <avatar image="https://github.githubassets.com/images/modules/site/logos/desktop-logo.png" ></avatar>
+      <avatar image="https://github.githubassets.com/images/modules/site/logos/desktop-logo.png"></avatar>
     </a>
     <section class="todoapp">
       <header class="header">
@@ -13,7 +13,8 @@
         <input id="toggle-all" class="toggle-all" type="checkbox" v-model="batchAll">
         <label for="toggle-all"></label>
         <ul class="todo-list">
-          <TodoItem v-for="todo in todosFiltered" :key="todo.id" :todo="todo" :counterActiveStarred="counterActiveStarred"></TodoItem>
+          <TodoItem v-for="todo in todosFiltered" :key="todo.id" :todo="todo"
+                    :counterActiveStarred="counterActiveStarred"></TodoItem>
         </ul>
       </section>
 
@@ -27,9 +28,8 @@
 </template>
 
 <script>
-  import _ from "lodash";
-  import Avatar from 'vue-avatar-component'
-  import * as FilterConfig from './constants/Filter'
+  import Avatar from 'vue-avatar-component';
+  import * as FilterConfig from './constants/Filter';
   import TodoItem from './components/TodoItem';
   import TodoForm from './components/TodoForm';
   import TodoCounter from './components/TodoCounter';
@@ -72,26 +72,35 @@
         }
       },
       todosAll: function () {
-        return _.orderBy(this.todos, ['completed', 'starred'], ['asc', 'desc'])
+        const activeTodos = this.todosActive;
+        const completedTodos = this.todosCompleted;
+        console.log(activeTodos, completedTodos);
+
+        return activeTodos.concat(completedTodos);
+        // return _.orderBy(this.todos, ['completed', 'starred'], ['asc', 'desc']);
       },
       todosCompleted: function () {
-        let completedTodos =  _.filter(this.todos, ['completed', true])
+        let completedTodos = [...this.todos];
+        completedTodos = completedTodos.filter(todo => todo.completed);
 
-        return _.orderBy(completedTodos, ['starred'], ['desc'])
+        return completedTodos.sort((a, b) => b.starred - a.starred);
       },
       todosActive: function () {
-        let activeTodos = _.filter(this.todos, ['completed', false]);
+        let activeTodos = [...this.todos];
+        activeTodos = activeTodos.filter(todo => !todo.completed);
 
-        return _.orderBy(activeTodos, ['starred'],  ['desc'])
+        return activeTodos.sort((a, b) => b.starred - a.starred);
       },
-      todosActiveStarred: function() {
-        return _.filter(this.todos, {'completed': false, 'starred': 1})
+      todosActiveStarred: function () {
+        const todos = [...this.todos];
+
+        return todos.filter(todo => !todo.completed && todo.starred);
       },
       counterActive: function () {
         return this.todosActive.length;
       },
       counterActiveStarred: function () {
-        return this.todosActiveStarred.length
+        return this.todosActiveStarred.length;
       },
       batchAll: {
         get: function () {
