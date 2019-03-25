@@ -74,7 +74,6 @@
       todosAll: function () {
         const activeTodos = this.todosActive;
         const completedTodos = this.todosCompleted;
-        console.log(activeTodos, completedTodos);
 
         return activeTodos.concat(completedTodos);
         // return _.orderBy(this.todos, ['completed', 'starred'], ['asc', 'desc']);
